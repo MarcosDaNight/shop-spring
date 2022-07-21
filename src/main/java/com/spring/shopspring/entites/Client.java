@@ -1,12 +1,11 @@
 package com.spring.shopspring.entites;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -27,6 +26,9 @@ public class Client implements Serializable {
 
     private String password;
 
+    @OneToMany(mappedBy = "client")
+    private List<Order> orders;
+
     public Client() {
     }
 
@@ -37,6 +39,7 @@ public class Client implements Serializable {
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.orders = new ArrayList<>();
     }
 
     public Long getId() {
@@ -77,6 +80,14 @@ public class Client implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void addOrder(Order order) {
+        this.orders.add(order);
     }
 
     @Override
