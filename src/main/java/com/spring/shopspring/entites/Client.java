@@ -1,6 +1,8 @@
 package com.spring.shopspring.entites;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -9,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "client_table")
 public class Client implements Serializable {
 
     @Serial
@@ -26,6 +29,7 @@ public class Client implements Serializable {
 
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     private List<Order> orders;
 
