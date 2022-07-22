@@ -2,6 +2,7 @@ package com.spring.shopspring.config;
 
 import com.spring.shopspring.entites.Client;
 import com.spring.shopspring.entites.Order;
+import com.spring.shopspring.entites.enums.OrderStatus;
 import com.spring.shopspring.repositories.ClientRepository;
 import com.spring.shopspring.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class SeedConfig implements CommandLineRunner {
 
         clientRepository.saveAll(Arrays.asList(c0, c1,c2));
 
-        Order o1 = new Order(null, Instant.parse("2022-06-20T19:53:07Z"), c1);
-        Order o2 = new Order(null, Instant.parse("2021-07-21T03:42:10Z"), c0);
-        Order o3 = new Order(null, Instant.parse("2021-07-22T15:21:22Z"), c2);
+        Order o1 = new Order(null, Instant.parse("2022-06-20T19:53:07Z"), OrderStatus.PAID, c1);
+        Order o2 = new Order(null, Instant.parse("2021-07-21T03:42:10Z"), OrderStatus.WAITING_PAYMENT, c0);
+        Order o3 = new Order(null, Instant.parse("2021-07-22T15:21:22Z"),OrderStatus.DELIVERED, c2);
 
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 

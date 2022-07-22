@@ -1,4 +1,4 @@
-package com.spring.shopspring.services.client;
+package com.spring.shopspring.services.order;
 
 import com.spring.shopspring.entites.Order;
 import com.spring.shopspring.repositories.OrderRepository;
