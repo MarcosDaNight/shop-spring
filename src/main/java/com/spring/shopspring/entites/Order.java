@@ -2,6 +2,7 @@ package com.spring.shopspring.entites;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.spring.shopspring.entites.enums.OrderStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -23,12 +24,15 @@ public class Order implements Serializable {
     @JoinColumn(name = "client_id")
     private Client client;
 
+    private Integer orderStatus;
+
     public Order() {
     }
 
-    public Order(Long id, Instant moment, Client client) {
+    public Order(Long id, Instant moment, OrderStatus orderStatus, Client client) {
         this.id = id;
         this.moment = moment;
+        this.setOrderStatus(orderStatus);
         this.client = client;
     }
 
@@ -48,6 +52,15 @@ public class Order implements Serializable {
         this.moment = moment;
     }
 
+    public OrderStatus getOrderStatus() {
+        return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        if(orderStatus != null)
+            this.orderStatus = orderStatus.getCode();
+    }
+
     public Client getClient() {
         return client;
     }
@@ -59,8 +72,7 @@ public class Order implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Order)) return false;
-        Order order = (Order) o;
+        if (!(o instanceof Order order)) return false;
         return id.equals(order.id);
     }
 

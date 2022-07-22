@@ -1,7 +1,7 @@
 package com.spring.shopspring.controllers;
 
 import com.spring.shopspring.entites.Order;
-import com.spring.shopspring.services.client.OrderService;
+import com.spring.shopspring.services.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
