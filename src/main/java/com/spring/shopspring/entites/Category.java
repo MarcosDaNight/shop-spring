@@ -2,7 +2,9 @@ package com.spring.shopspring.entites;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "category_table")
@@ -13,6 +15,9 @@ public class Category implements Serializable {
     private Long id;
     private String name;
 
+    @Transient
+    private Set<Product> products;
+
     public Category() {
     }
 
@@ -20,6 +25,7 @@ public class Category implements Serializable {
         super();
         this.id = id;
         this.name = name;
+        this.products = new HashSet<>();
     }
 
     public Long getId() {
@@ -36,6 +42,18 @@ public class Category implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public void deleteProduct(Product product) {
+        this.products.remove(product);
     }
 
     @Override

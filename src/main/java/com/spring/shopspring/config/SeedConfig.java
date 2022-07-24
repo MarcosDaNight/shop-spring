@@ -3,10 +3,12 @@ package com.spring.shopspring.config;
 import com.spring.shopspring.entites.Category;
 import com.spring.shopspring.entites.Client;
 import com.spring.shopspring.entites.Order;
+import com.spring.shopspring.entites.Product;
 import com.spring.shopspring.entites.enums.OrderStatus;
 import com.spring.shopspring.repositories.CategoryRepository;
 import com.spring.shopspring.repositories.ClientRepository;
 import com.spring.shopspring.repositories.OrderRepository;
+import com.spring.shopspring.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +30,9 @@ public class SeedConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -36,6 +41,14 @@ public class SeedConfig implements CommandLineRunner {
         Category cat3 = new Category(null, "Computers");
 
         categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+
+        Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+        Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+        Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+        Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+        Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+
+        productRepository.saveAll(Arrays.asList(p1, p2, p3,p4, p5));
 
         Client c0 = new Client(null, "Marcos Guillermo", "mgdn@gmail.com", "999999999", "123456");
         Client c1 = new Client(null, "Maria Brown", "maria@gmail.com", "988888888", "123456");
