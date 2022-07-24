@@ -7,7 +7,9 @@ import com.spring.shopspring.entites.enums.OrderStatus;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "order_table")
@@ -26,6 +28,9 @@ public class Order implements Serializable {
 
     private Integer orderStatus;
 
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItem> items;
+
     public Order() {
     }
 
@@ -34,6 +39,7 @@ public class Order implements Serializable {
         this.moment = moment;
         this.setOrderStatus(orderStatus);
         this.client = client;
+        this.items = new HashSet<>();
     }
 
     public Long getId() {
@@ -67,6 +73,10 @@ public class Order implements Serializable {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Set<OrderItem> getItems() {
+        return items;
     }
 
     @Override
