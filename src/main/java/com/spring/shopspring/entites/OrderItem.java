@@ -1,5 +1,6 @@
 package com.spring.shopspring.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.shopspring.entites.pk.OrderItemPK;
 
 import javax.persistence.EmbeddedId;
@@ -24,12 +25,14 @@ public class OrderItem implements Serializable {
 
     public OrderItem(Order order, Product product, Integer quantity, Double price) {
         super();
+        this.id = new OrderItemPK();
         this.id.setOrder(order);
         this.id.setProduct(product);
         this.quantity = quantity;
         this.price = price;
     }
 
+    @JsonIgnore
     public Order getOrder() {
         return this.id.getOrder();
     }
