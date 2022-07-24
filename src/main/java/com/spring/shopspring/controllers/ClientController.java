@@ -2,7 +2,6 @@ package com.spring.shopspring.controllers;
 
 import com.spring.shopspring.entites.Client;
 import com.spring.shopspring.services.client.ClientService;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
