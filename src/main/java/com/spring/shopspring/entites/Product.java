@@ -111,4 +111,3 @@ public class Product implements Serializable {
         return Objects.hash(id, name);
     }
 }
-    
