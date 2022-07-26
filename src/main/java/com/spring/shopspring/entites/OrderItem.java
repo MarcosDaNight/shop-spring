@@ -41,6 +41,7 @@ public class OrderItem implements Serializable {
         this.id.setOrder(order);
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return this.id.getProduct();
     }
