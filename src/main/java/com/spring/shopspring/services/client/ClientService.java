@@ -11,4 +11,6 @@ public interface ClientService {
     Client findById(Long id);
 
     Client insertClient(Client client);
+
+    void deleteClient(Long id);
 }
