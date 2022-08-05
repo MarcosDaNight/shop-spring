@@ -24,4 +24,11 @@ public class ClientServiceImpl implements ClientService{
         Optional<Client> clientOp = clientRepository.findById(id);
         return clientOp.get();
     }
+
+    @Override
+    public Client insertClient(Client client) {
+        return clientRepository.save(client);
+    }
+
+
 }

@@ -9,4 +9,6 @@ public interface ClientService {
     List<Client> findAll();
 
     Client findById(Long id);
+
+    Client insertClient(Client client);
 }
